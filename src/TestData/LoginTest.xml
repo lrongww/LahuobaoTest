@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 	<login name="登录相关测试数据">
-		<usename>lrong11</usename>
-		<password>123123</password>
+		<usename>lrong8</usename>
+		<password>123456</password>
 		<checkpoint1>nowrap</checkpoint1>
-		<value1>lrong11</value1>
+		<value1>lrong8</value1>
 	</login>
 	<releasesource name="发布货源相关数据">
-		<weight>11</weight>
-		<volume>55</volume>
+		<weight>22</weight>
+		<volume>33</volume>
 	</releasesource>
 </testdata>

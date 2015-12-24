@@ -1,16 +1,16 @@
 package commonFunction;
 
 import org.openqa.selenium.By;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class CommonFunctions {
-	 public WebDriver driver;
+	public WebDriver driver= MyWebDriver.getInstance().driver;
 	
 	public CommonFunctions()
 	{
@@ -19,7 +19,6 @@ public class CommonFunctions {
 	//代开网页
 	public void getUrl(String url)throws Exception
 	{
-		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.get(url);
 		Thread.sleep(5000);
@@ -57,7 +56,7 @@ public class CommonFunctions {
 		return elem.getText();
 		}
 		//单击某个元素
-		public void clickItem(String type,String location)
+		public void clickItem(String type,String location)throws Exception
 		{
 			WebElement elem = null;
 			if(type.equals("xpath"))
@@ -75,6 +74,7 @@ public class CommonFunctions {
 			if(type.equals("text"))
 				elem =driver.findElement(By.linkText(location));
 			elem.click();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
 			
 		}
 		//清除文本框内容
@@ -189,7 +189,7 @@ public class CommonFunctions {
 		}
 		//选择收发货地址
 		public void selectAdress(String location,String provinceid,String cityid ,String districtid)throws Exception
-		{
+		{//该方法的算法有点混乱，id实际上没有找到规律，之后还需优化
 			this.clearvalue("id", location);
 			this.clickItem("id", location);
 			this.clickItem("xpath", "html/body/div[5]/div[1]/ul/li[2]/a");

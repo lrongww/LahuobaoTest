@@ -1,27 +1,26 @@
 package TestCases;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
+
 import org.w3c.dom.Document;
 
 import commonFunction.CommonFunctions;
 import commonFunction.DataProvide;
 import commonFunction.DataReader;
 
-import static org.junit.Assert.*;
+
 
 import org.testng.annotations.BeforeTest;
 //import org.testng.annotations.AfterTest;
 
 public class LoginTest extends DataProvide {
-	 public CommonFunctions comfun;
+	 public CommonFunctions comfun = new CommonFunctions();
 	 public DataReader dr;
 	 
    
   @BeforeTest
   public void setup()throws Exception 
   {
-	 comfun = new CommonFunctions();
 	 String url="http://v2.lahuobao.net";
 	 comfun.getUrl(url);
 	 dr = new DataReader();
@@ -39,7 +38,9 @@ public class LoginTest extends DataProvide {
 	  System.out.println(test);
 	//检测登录
 	  comfun.ckeckequal(comfun.getText("id", "nowrap"), dr.readNodeValue(params, "login", "value1"));
-
+//	  Thread.sleep(3000);
+//	  comfun.mouseHover();
+//	  comfun.clickItem("xpath", ".//*[@id='toBeDriver']/dl/dd[8]/a ");  //我要当车主
 	 // comfun.ckeckequal(comfun.getText("id", dr.readNodeValue(params, "login", "ckeckpoint1")), dr.readNodeValue(params, "login", "value1"));
   }
  @Test(dataProvider="Test_xml_dataprovider")
@@ -52,7 +53,7 @@ public void testReleaseSource(Document params)throws Exception
 	  {
 		  System.out.println("切换");
 		  comfun.mouseHover();
-		  comfun.clickItem("xpath", ".//*[@id='toBeCarowner']/dl/dd[10]/a");  
+		  comfun.clickItem("xpath", ".//*[@id='toBeCarowner']/dl/dd[10]/a");  //我要当货主
 	  }
 	  System.out.println("不切换");
 	  //填写发货地

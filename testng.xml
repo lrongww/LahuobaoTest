@@ -3,8 +3,18 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
-      <class name="TestCases.LoginTest"/>
-      <class name="TestCases.QuotedPrice"/>
+      <class name="TestCases.LoginTest">
+       <methods>
+      <include name="testLogin"/>
+      <include name="testReleaseSource"/>
+      </methods>
+      </class>
+      <class name="TestCases.QuotedPrice">
+       <methods>
+       <include name="testQuotedPrice"/>
+      <include name="testCargoOwnerComfirm"/>  
+      </methods>
+      </class>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
