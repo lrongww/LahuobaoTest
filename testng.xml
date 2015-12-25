@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="false">
-  <test name="Test">
+  <test name="Test" preserve-order="true">
     <classes>
-      <class name="TestCases.LoginTest">
-       <methods>
-      <include name="testLogin"/>
-      <include name="testReleaseSource"/>
-      </methods>
-      </class>
+      <class name="TestCases.LoginTest"/>
       <class name="TestCases.QuotedPrice">
-       <methods>
-       <include name="testQuotedPrice"/>
-      <include name="testCargoOwnerComfirm"/>  
-      </methods>
+         <methods>
+            <include name="testQuotedPrice"/>
+            <include name="testCargoOwnerComfirm"/>
+      	</methods>
       </class>
+      <class name="TestCases.WaybillManagement">
+      	<methods>
+      		<include name="GenerateWaybill"/>
+      		<include name="ApplyTakeOver"/>
+      		<include name="ModifyFreight"/>
+      	</methods>
+      </class>
+      
+      
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

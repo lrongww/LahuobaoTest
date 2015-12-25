@@ -20,22 +20,6 @@ public class QuotedPrice extends DataProvide {
 		  //设置数据源
 		 // init("src/TestData/LoginTest.xml"); 
 	 }
-//	 @Test(dataProvider="Test_xml_dataprovider")
-//	  public void testLogin(Document params)throws Exception
-//	  {
-//		 comfun = new CommonFunctions();
-//		 String url="http://v2.lahuobao.net";
-//		 comfun.getUrl(url); 
-//		//登录
-//		  comfun.login(dr.readNodeValue(params, "login", "usename"), dr.readNodeValue(params, "login", "password"));
-//		  String test = comfun.getText("id", "nowrap");
-//		  System.out.println(test);
-//		//检测登录
-//		  comfun.ckeckequal(comfun.getText("id", "nowrap"), dr.readNodeValue(params, "login", "value1"));
-//
-//		 // comfun.ckeckequal(comfun.getText("id", dr.readNodeValue(params, "login", "ckeckpoint1")), dr.readNodeValue(params, "login", "value1"));
-//	  }
-	 //(dataProvider = "Test_xml_dataprovider")
 	 @Test
 	 public void testQuotedPrice()throws Exception//司机报价
 	 {
