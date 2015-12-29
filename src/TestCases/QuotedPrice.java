@@ -47,9 +47,8 @@ public class QuotedPrice extends DataProvide {
 		 comfun.clickItem("xpath", "/html/body/div[2]/div[2]/div/table/tbody/tr[1]");
 		 //确认成交
 		 comfun.clickItem("xpath", "/html/body/div[2]/div[1]/div[4]/table/tbody/tr/td[6]/div/form[2]/input[1]");
-		 Thread.sleep(5000);
-		 //点击待生成运单
-		 comfun.clickItem("text", "待生成运单");
+		 Thread.sleep(1000);
+		comfun.clickItem("text", "待生成运单");
 		 
 	 }
 	 

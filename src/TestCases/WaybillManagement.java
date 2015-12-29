@@ -7,7 +7,7 @@ import commonFunction.CommonFunctions;
 public class WaybillManagement {
 	public CommonFunctions comfun = new CommonFunctions();
   @Test
-  public void GenerateWaybill()throws Exception 
+  public void GenerateWaybill()throws Exception //货主生成运单
   {
 	  //运单默认，不填写
 	  comfun.clickItem("xpath", ".//*[@id='lineSearchInfoTable']/tbody/tr[1]");//选择第一条待生成运单记录
@@ -17,7 +17,7 @@ public class WaybillManagement {
   }
   
   @Test
-  public void ApplyTakeOver() throws Exception
+  public void ApplyTakeOver() throws Exception//车主申请收货
   {
 	  //切换为车主身份
 	  comfun.mouseHover();
@@ -48,6 +48,25 @@ public class WaybillManagement {
 	  comfun.inputValue("id", "iptClaimNote","货物增加");//增加的运费原因
 	  comfun.clickItem("xpath", ".//*[@id='frmAppliyClaimsFee']/div[2]/div/input");//点击确定按钮
   }
+  @Test
+  public void ComfirmFreight() throws Exception//车主确认修改运费
+  {
+	//切换为车主身份
+	  comfun.mouseHover();
+	  comfun.clickItem("xpath", "//*[@id='toBeDriver']/dl/dd[8]/a");//我要当车主
+	  comfun.clickItem("id", "navTagShippingMag");//点击运单管理
+	  comfun.clickItem("text", "待收货");//点击待收货
+	  comfun.clickItem("xpath", ".//*[@id='lineSearchInfoTable']/tbody/tr[1]");//选择一条待收货的记录
+	  comfun.clickItem("xpath", "/html/body/div[2]/div/div[2]/div[1]/div[2]/div[1]/form/input[2]");//点击确认修改按钮
+  }
+  @Test
+  public void PayAndEvalate()throws Exception
+  {
+	  comfun.clickWaybillStates("我要当货主", "待收货");//切换为货主，点击待收货
+	  comfun.clickWaybillStates("我要当车主", "待评价");
+	 // comfun.clickWaybillStates("我要当货主", "待评价");
+  }
+  
   
   
 }

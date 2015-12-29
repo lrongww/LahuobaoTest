@@ -214,6 +214,70 @@ public class CommonFunctions {
 			Thread.sleep(1000);
 			
 		}
+		//车主、货主选择运单管理的不同状态
+		public void clickWaybillStates(String status,String states)throws Exception
+		{
+			if(status.equals("我要当车主"))
+			{
+				this.mouseHover();
+				this.clickItem("xpath", "//*[@id='toBeDriver']/dl/dd[8]/a");//我要当车主
+				this.clickItem("id", "navTagShippingMag");//点击运单管理
+				this.clickItem("text", states);//点击状态
+				this.clickItem("xpath", ".//*[@id='lineSearchInfoTable']/tbody/tr[1]");//选择一条待评价的记录
+				if(states.equals("待申请收货")||states.equals("待生成运单"))
+				{
+					this.clickItem("xpath", ".//*[@id='frmApplyforreceipt']/input[2]");//点击申请收货按钮
+					this.clickItem("xpath", "html/body/div[2]/div/div[2]/div[1]/div[2]/div/button");//点击上传回单
+					this.inputValue("xpath", ".//*[@id='frmBackImg']/div[1]/div[1]/div/input", "E:\\BugCupture\\123.png");
+					this.inputValue("xpath", ".//*[@id='frmBackImg']/div[1]/div[2]/div/input", "E:\\BugCupture\\11.png");
+					this.inputValue("xpath", ".//*[@id='frmBackImg']/div[1]/div[3]/div/input", "E:\\BugCupture\\dd.png");
+					this.clickItem("id", "lyEditbtnok");
+				}
+				else if(states.equals("待评价"))
+				{
+					this.clickItem("xpath", "/html/body/div[2]/div[1]/div[2]/div[1]/div[2]/div/form/input[3]");//点击评价车主按钮
+					this.clickItem("xpath", "/html/body/div[2]/form/div/div[3]/div[2]/div[1]/ul/li[5]/img");//5颗星
+					this.inputValue("xpath", "/html/body/div[2]/form/div/div[3]/div[2]/div[2]/textarea", "货主非常好");
+					this.clickItem("xpath", "/html/body/div[2]/form/div/div[3]/div[4]/input");//点击提交按钮
+				}
+			}
+			
+			
+			if(status.equals("我要当货主"))
+			{
+				this.mouseHover();
+				this.clickItem("xpath", ".//*[@id='toBeCarowner']/dl/dd[10]/a ");//我要当货主
+				this.clickItem("id", "navTagShippingMag");//点击运单管理
+				this.clickItem("text", states);//点击状态
+				this.clickItem("xpath", ".//*[@id='lineSearchInfoTable']/tbody/tr[1]");//选择一条待评价的记录
+				if(states.equals("待生成运单"))
+				{
+					 //运单默认，不填写
+					  this.clickItem("xpath", ".//*[@id='lineSearchInfoTable']/tbody/tr[1]");//选择第一条待生成运单记录
+					  this.clickItem("xpath", "html/body/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/button");//点击生成运单按钮
+					  this.clickItem("xpath", ".//*[@id='divWaybillButtonGroup1']/div/input");//点击下一页
+					  this.clickItem("xpath", ".//*[@id='divWaybillButtonGroup2']/div/button");//点击确认按钮  
+				}
+				
+				else if(states.equals("待收货")||states.equals("待申请收货"))//确认收货并付款
+				{
+					this.clickItem("id", "policy");//勾选同意协议
+					this.clickItem("xpath", "/html/body/div[2]/div[1]/div[2]/div[1]/div[2]/form/div/input[2]");//确认收货并付款
+					this.clearvalue("xpath", "/html/body/div[2]/div[4]/table/tbody/tr/td/div/form/div[1]/div/input");
+					this.inputValue("xpath", "/html/body/div[2]/div[4]/table/tbody/tr/td/div/form/div[1]/div/input", "111111");//输入支付密码
+					this.clickItem("xpath", "/html/body/div[2]/div[4]/table/tbody/tr/td/div/form/div[2]/div/input");//确定
+				}
+				else if(states.equals("待评价"))
+				{
+					
+					this.clickItem("xpath", "/html/body/div[2]/div[1]/div[2]/div[1]/div[2]/div/form/input[3]");//点击评价车主按钮
+					this.clickItem("xpath", "/html/body/div[2]/form/div/div[3]/div[2]/div[1]/ul/li[5]/img");//5颗星
+					this.inputValue("xpath", "/html/body/div[2]/form/div/div[3]/div[2]/div[2]/textarea", "车主非常好");
+					this.clickItem("xpath", "/html/body/div[2]/form/div/div[3]/div[4]/input");//点击提交按钮
+				}
+				
+			}
+		}
 		//退出登录
 		public void logout()throws Exception
 		{
